@@ -1,0 +1,24 @@
+/* Rebekah Heacock Jones
+ * rebekah.heacock@gmail.com
+ * CSCI E-3, Spring 2016
+ * hw2b.js 
+ */
+
+.container {
+	max-width: 800px;
+}
+
+header {
+	text-align: center;
+}
+
+form {
+	max-width: 600px;
+	overflow: auto;
+	margin: auto;
+	padding-bottom: 15px;
+}
+
+.read-list {
+	padding-top: 15px;
+}
