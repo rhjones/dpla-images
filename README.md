@@ -14,6 +14,18 @@ Queries DPLA API for images and displays them.
 - more metadata
 - pagination/more results?
 
-TODO
+##TODO
 - figure out how to validate user input to avoid dangerous searches (alphanumeric only?)
 - better record display
+
+## Requirements (4 of 5)
+- DOM element creation, deletion or modification (√)
+- DOM traversal
+- Capturing and handling events (beyond just a “Do it!” button)
+	- could do this through the US map idea
+- Creating and handling a data structure (JSON, custom objects, etc)
+	- maybe? 
+- Form validation
+	- maybe?
+- Closures
+- AJAX (√)
