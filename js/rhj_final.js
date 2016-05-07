@@ -113,6 +113,11 @@
 
                     // use reloadItems to force a reload after a new ajax call is made
                     $grid.masonry('reloadItems');
+
+                    $grid.on( 'click', '.grid-item-content', function( event ) {
+                      $( event.currentTarget ).parent('.grid-item').toggleClass('is-expanded');
+                      $grid.masonry();
+                    });
                 })
                 .fail(function(data){
                     $('#dataError').html('Error querying the database. Please try again.').show();

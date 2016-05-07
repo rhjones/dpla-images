@@ -36,7 +36,7 @@ Queries DPLA API for images and displays them.
 - Closures
 - ~~AJAX~~
 
-## Relevant Links
-- https://css-tricks.com/seamless-responsive-photo-grid/
-- http://masonry.desandro.com/
+## Outside Sources
+- [Masonry](http://masonry.desandro.com/)
+-- [animating item size](http://masonry.desandro.com/extras.html#animating-item-size)
 - https://www.smashingmagazine.com/2010/05/make-your-own-bookmarklets-with-jquery/
