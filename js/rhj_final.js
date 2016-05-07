@@ -17,25 +17,18 @@
 
         // hide any outstanding errors
         $('#error').hide();
-        $('#noResults').hide();
-
-        // initialize masonry
-        // var $grid = $('.grid').masonry({
-        //     itemSelector: '.grid-item',
-        //     columnWidth: 100,
-        // });
+        $('#dataError').hide();
 
         // get and validate the search term
+        // only A-Z, a-z, 0-9, and spaces allowed
         var searchInput = $('#searchterm').val();
-
-        // regular expression matching alphanumeric characters, underscores, and spaces
         var re = /^[A-Za-z\d ]+$/;
 
         // if search term validates
         if(re.test(searchInput)) {
 
             var searchTerm = searchInput.replace(/ /g, '+');
-            console.log(searchTerm);
+
             // query the DPLA API for images matching the search term        
             var query = 'http://api.dp.la/v2/items?q=' + searchTerm + '&sourceResource.type=image&page_size=24&api_key=5a573c1768acfa5a1af77a9fee15e89b';
             $.ajax({
@@ -58,11 +51,11 @@
                         
                         // set up outer div for grid display
                         var outerDiv = document.createElement('div');
-                        outerDiv.className = 'grid-item';
+                        $(outerDiv).addClass('grid-item');
 
                         // set up inner div to hold item information 
                         var innerDiv = document.createElement('div');
-                        innerDiv.className = 'grid-item-content';
+                        $(innerDiv).addClass('grid-item-content');
 
                         // check for item metadata and add to innerDiv
                         function checkMetadata(metadata) {
@@ -80,9 +73,9 @@
                                 datum.textContent += '. . .';
                             }
                             var span = document.createElement('span');
-                            span.className = 'item-' + metadata;
-                            span.appendChild(datum);
-                            innerDiv.appendChild(span);
+                            $(span).addClass('item-' + metadata);
+                            $(span).append(datum);
+                            $(innerDiv).append(span);
                         }
 
                         checkMetadata('title');
@@ -95,11 +88,33 @@
                         img.src = item.object;
 
                         // append everything to DOM 
-                        innerDiv.appendChild(img);
-                        outerDiv.appendChild(innerDiv);
+                        $(innerDiv).append(img);
+                        $(outerDiv).append(innerDiv);
                         $('#output').append(outerDiv);
 
                     });
+
+                    // assign background colors to item divs
+                    $('.grid-item-content').each(function(index) {
+                        var bgColors = ['green', 'yellow', 'aqua', 'gray', 'red'];
+                        $(this).addClass(bgColors[index%5]);
+                    });
+
+                    // reduce opacity of background color on hover
+
+                    $('.grid-item-content').hover(
+                        function() {
+                            var oldRGBA = $(this).css('background-color');
+                            var oldColor = oldRGBA.substring(0, oldRGBA.lastIndexOf(' '));
+                            var newColor = oldColor + ' 1.0)';
+                            $(this).css('background-color', newColor);
+                        }, function() {
+                            var oldRGBA = $(this).css('background-color');
+                            var oldColor = oldRGBA.substring(3, oldRGBA.lastIndexOf(')'));
+                            var newColor = 'rgba' + oldColor + ', 0.5)';
+                            $(this).css('background-color', newColor);
+                        }
+                    );
 
                     // make the display pretty with masonry
                     // after images have loaded
@@ -118,6 +133,7 @@
                       $( event.currentTarget ).parent('.grid-item').toggleClass('is-expanded');
                       $grid.masonry();
                     });
+
                 })
                 .fail(function(data){
                     $('#dataError').html('Error querying the database. Please try again.').show();
@@ -125,6 +141,7 @@
         } else { // if search term fails validation
             $('#error').show();
         }
+
 
         
 

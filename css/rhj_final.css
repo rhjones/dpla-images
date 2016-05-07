@@ -33,6 +33,30 @@ form {
 	display: none;
 }
 
+/* BACKGROUND COLORS */
+
+.green {
+	background-color: rgba(141, 152, 118, 0.5);
+}
+
+.yellow {
+	background-color: rgba(203, 179, 69, 0.5);
+}
+
+.aqua {
+	background-color: rgba(96, 159, 128, 0.5);
+}
+
+.gray {
+	background-color: rgba(75, 87, 77, 0.5);
+}
+
+.red {
+	background-color: rgba(175, 66, 10, 0.5);
+}
+
+/* MASONRY */
+
 .grid-item {
 	float: left;
 }
@@ -40,24 +64,21 @@ form {
 .grid-item,
 .grid-item-content { 
 	width: 300px; 
-	height: 300px;
+	height: 200px;
 }
 
 .grid-item-content {
-	background: #DDD;
-	border: 1px solid gray;
 	transition: width 0.4s, height 0.4s;
 }
 
-.grid-item:hover {
-	background: #BBB;
+.grid-item-content:hover {
 	cursor: pointer;
 }
 
 .grid-item.is-expanded,
 .grid-item.is-expanded .grid-item-content {
   width: 600px;
-  height: 300px;
+  height: 200px;
 }
 
 .grid-item-content img {
@@ -69,5 +90,4 @@ form {
 }
 
 .grid-item.is-expanded .grid-item-content {
-  background: #BBB;
 }
