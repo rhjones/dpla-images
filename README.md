@@ -13,8 +13,14 @@ Queries DPLA API for images and displays them.
 - more inventive way of searching: click on a map? use a datalist to allow for text entry/autocomplete?
 - more metadata
 - pagination/more results?
+- comparison: pit two search terms against each other & return metadata
+	- # of images
+	- # of videos
+	- # of audio files
+	- # of text items
+- turn into a bookmarklet? select something on a webpage and click the DPLA image search bookmarklet, and get a new page w/results 
 
-##TODO
+## TODO
 - figure out how to validate user input to avoid dangerous searches (alphanumeric only?)
 - better record display
 
@@ -25,7 +31,12 @@ Queries DPLA API for images and displays them.
 	- could do this through the US map idea
 - Creating and handling a data structure (JSON, custom objects, etc)
 	- maybe? 
-- Form validation
-	- maybe?
+- Form validation (√)
+	- validate user input to be alphanumeric
 - Closures
 - AJAX (√)
+
+## Relevant Links
+- https://css-tricks.com/seamless-responsive-photo-grid/
+- http://masonry.desandro.com/
+- https://www.smashingmagazine.com/2010/05/make-your-own-bookmarklets-with-jquery/

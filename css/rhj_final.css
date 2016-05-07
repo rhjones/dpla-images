@@ -22,3 +22,9 @@ form {
 .read-list {
 	padding-top: 15px;
 }
+
+#error {
+	color: red;
+	display: none;
+	margin-bottom: .5rem;
+}
