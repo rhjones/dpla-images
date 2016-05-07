@@ -28,3 +28,11 @@ form {
 	display: none;
 	margin-bottom: .5rem;
 }
+
+#noResults {
+	display: none;
+}
+
+.grid-item { 
+	width: 100px; 
+}
