@@ -30,12 +30,15 @@
             var searchTerm = searchInput.replace(/ /g, '+');
 
             // query the DPLA API for images matching the search term        
-            var query = 'http://api.dp.la/v2/items?q=' + searchTerm + '&sourceResource.type=image&page_size=24&api_key=5a573c1768acfa5a1af77a9fee15e89b';
-            $.ajax({
-                url: query,
-                dataType: 'jsonp',
-                })
-                .done(function(data){
+            //var query = 'http://api.dp.la/v2/items?q=' + searchTerm + '&sourceResource.type=image&page_size=24&api_key=5a573c1768acfa5a1af77a9fee15e89b';
+            // $.ajax({
+            //     url: query,
+            //     dataType: 'jsonp',
+            //     })
+            //     .done(function(data){
+
+                    var data = peacocks;
+                    
                     console.log(data);
 
                     // clear any preexisting output
@@ -134,10 +137,10 @@
                       $grid.masonry();
                     });
 
-                })
-                .fail(function(data){
-                    $('#dataError').html('Error querying the database. Please try again.').show();
-                });
+                // })
+                // .fail(function(data){
+                //     $('#dataError').html('Error querying the database. Please try again.').show();
+                // });
         } else { // if search term fails validation
             $('#error').show();
         }

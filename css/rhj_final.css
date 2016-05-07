@@ -4,6 +4,14 @@
  * hw2b.js 
  */
 
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
 .container {
 	max-width: 900px;
 }
@@ -68,6 +76,7 @@ form {
 }
 
 .grid-item-content {
+	padding: 5px;
 	transition: width 0.4s, height 0.4s;
 }
 
@@ -90,4 +99,13 @@ form {
 }
 
 .grid-item.is-expanded .grid-item-content {
+}
+
+/* ITEM DISPLAY */
+.grid-item span {
+	display: block;
+}
+
+.item-title {
+	font-weight: bold;
 }
