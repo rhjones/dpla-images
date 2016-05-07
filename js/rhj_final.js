@@ -75,6 +75,10 @@
                             else {
                                 var datum = document.createTextNode('No ' + metadata + ' given');
                             }
+                            if (datum.length > 175) {
+                                var extraDatum = datum.splitText(175);
+                                datum.textContent += '. . .';
+                            }
                             var span = document.createElement('span');
                             span.className = 'item-' + metadata;
                             span.appendChild(datum);
