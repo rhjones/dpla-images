@@ -26,15 +26,18 @@
         // });
 
         // get and validate the search term
-        var searchterm = $('#searchterm').val();
+        var searchInput = $('#searchterm').val();
 
         // regular expression matching alphanumeric characters, underscores, and spaces
         var re = /^[A-Za-z\d ]+$/;
 
         // if search term validates
-        if(re.test(searchterm)) {
+        if(re.test(searchInput)) {
+
+            var searchTerm = searchInput.replace(/ /g, '+');
+            console.log(searchTerm);
             // query the DPLA API for images matching the search term        
-            var query = 'http://api.dp.la/v2/items?q=' + searchterm + '&sourceResource.type=image&page_size=24&api_key=5a573c1768acfa5a1af77a9fee15e89b';
+            var query = 'http://api.dp.la/v2/items?q=' + searchTerm + '&sourceResource.type=image&page_size=24&api_key=5a573c1768acfa5a1af77a9fee15e89b';
             $.ajax({
                 url: query,
                 dataType: 'jsonp',
