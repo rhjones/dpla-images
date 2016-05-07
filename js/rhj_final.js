@@ -41,89 +41,65 @@
                 })
                 .done(function(data){
                     console.log(data);
-                    if (data.count === 0) {
-                        $('#noResults').show();
-                    }
-                    // add a "no images found" message
-                    // clear the output
+
+                    // clear any preexisting output
                     $('#output').empty();
+
+                    // show message if query returns no results
+                    if (data.count === 0) {
+                        $('#dataError').html('No results found.').show();
+                    }
 
                     // display each image
                     $.each(data.docs, function (i, item) {
+                        
+                        // set up outer div for grid display
                         var outerDiv = document.createElement('div');
+                        outerDiv.className = 'grid-item';
 
+                        // set up inner div to hold item information 
+                        var innerDiv = document.createElement('div');
+                        innerDiv.className = 'grid-item-content';
+
+                        // check for item metadata and add to innerDiv
+                        function checkMetadata(metadata) {
+                            if (metadata == 'title' && item.hasOwnProperty('admin') && item.admin.sourceResource.hasOwnProperty('title')) {
+                                var datum = document.createTextNode(item.admin.sourceResource.title);
+                            }
+                            else if (item.sourceResource.hasOwnProperty(metadata)) {
+                                var datum = document.createTextNode(item.sourceResource[metadata]);
+                            } 
+                            else {
+                                var datum = document.createTextNode('No ' + metadata + ' given');
+                            }
+                            var span = document.createElement('span');
+                            span.className = 'item-' + metadata;
+                            span.appendChild(datum);
+                            innerDiv.appendChild(span);
+                        }
+
+                        checkMetadata('title');
+                        checkMetadata('creator');
+                        checkMetadata('date');
+                        checkMetadata('description');
+                        
+                        // create image
                         var img = document.createElement('img');
                         img.src = item.object;
 
-                        var div = document.createElement('div');
-                        div.className = 'grid-item-content';
-
-                        if(item.hasOwnProperty('admin')) {
-                            if (item.admin.sourceResource.hasOwnProperty('title')) {
-                                var title = document.createTextNode(item.admin.sourceResource.title);
-                            } 
-                        } else {
-                            var title = document.createTextNode('No title given');
-                        }
-
-                        if (item.sourceResource.hasOwnProperty('creator')) {
-                            var creator = document.createTextNode(item.sourceResource.creator[0]);
-                        } else {
-                            var creator = document.createTextNode('No creator given');
-                        }
-
-                        if (item.sourceResource.hasOwnProperty('date')) {
-                            var date = document.createTextNode(item.sourceResource.date['displayDate']);
-                        } else {
-                            var date = document.createTextNode('No date given');
-                        }
-
-                        if (item.sourceResource.hasOwnProperty('description')) {
-                            var description = document.createTextNode(item.sourceResource.description);
-                        } else {
-                            var description = document.createTextNode('No description given');
-                        }
-
-
-                        var titleSpan = document.createElement('span');
-                        titleSpan.className = 'item-title';
-                        titleSpan.appendChild(title);
-
-                        var creatorSpan = document.createElement('span');
-                        creatorSpan.className = 'item-creator';
-                        creatorSpan.appendChild(creator);
-
-                        var dateSpan = document.createElement('span');
-                        dateSpan.className = 'item-date';
-                        dateSpan.appendChild(date);
-
-                        var descriptionSpan = document.createElement('span');
-                        descriptionSpan.className = 'item-description';
-                        descriptionSpan.appendChild(description);
-
-                        outerDiv.appendChild(titleSpan);
-                        outerDiv.appendChild(creatorSpan);
-                        outerDiv.appendChild(dateSpan);
-                        outerDiv.appendChild(descriptionSpan);
-                        
-                        outerDiv.className = 'grid-item';
-
-                        div.appendChild(img);
-                        
-                        outerDiv.appendChild(div);
-
+                        // append everything to DOM 
+                        innerDiv.appendChild(img);
+                        outerDiv.appendChild(innerDiv);
                         $('#output').append(outerDiv);
 
                     });
 
+                    // make the display pretty with masonry
+                    // after images have loaded
                     var $grid = $('.grid').masonry({
-                        // options
                         itemSelector: '.grid-item',
                         columnWidth: 300
                     });
-
-                    // make the display pretty with masonry
-                    // after images have loaded
                     $grid.imagesLoaded().progress( function() {
                         $grid.masonry('layout');
                     });
@@ -132,7 +108,7 @@
                     $grid.masonry('reloadItems');
                 })
                 .fail(function(data){
-                    console.log('failed!');
+                    $('#dataError').html('Error querying the database. Please try again.').show();
                 });
         } else { // if search term fails validation
             $('#error').show();

@@ -29,7 +29,7 @@ form {
 	margin-bottom: .5rem;
 }
 
-#noResults {
+#dataError {
 	display: none;
 }
 
