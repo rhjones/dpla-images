@@ -50,16 +50,76 @@
 
                     // display each image
                     $.each(data.docs, function (i, item) {
+                        var outerDiv = document.createElement('div');
+
                         var img = document.createElement('img');
                         img.src = item.object;
-                        img.className = 'grid-item';
-                        $('#output').append(img);
+
+                        var div = document.createElement('div');
+                        div.className = 'grid-item-content';
+
+                        if(item.hasOwnProperty('admin')) {
+                            if (item.admin.sourceResource.hasOwnProperty('title')) {
+                                var title = document.createTextNode(item.admin.sourceResource.title);
+                            } 
+                        } else {
+                            var title = document.createTextNode('No title given');
+                        }
+
+                        if (item.sourceResource.hasOwnProperty('creator')) {
+                            var creator = document.createTextNode(item.sourceResource.creator[0]);
+                        } else {
+                            var creator = document.createTextNode('No creator given');
+                        }
+
+                        if (item.sourceResource.hasOwnProperty('date')) {
+                            var date = document.createTextNode(item.sourceResource.date['displayDate']);
+                        } else {
+                            var date = document.createTextNode('No date given');
+                        }
+
+                        if (item.sourceResource.hasOwnProperty('description')) {
+                            var description = document.createTextNode(item.sourceResource.description);
+                        } else {
+                            var description = document.createTextNode('No description given');
+                        }
+
+
+                        var titleSpan = document.createElement('span');
+                        titleSpan.className = 'item-title';
+                        titleSpan.appendChild(title);
+
+                        var creatorSpan = document.createElement('span');
+                        creatorSpan.className = 'item-creator';
+                        creatorSpan.appendChild(creator);
+
+                        var dateSpan = document.createElement('span');
+                        dateSpan.className = 'item-date';
+                        dateSpan.appendChild(date);
+
+                        var descriptionSpan = document.createElement('span');
+                        descriptionSpan.className = 'item-description';
+                        descriptionSpan.appendChild(description);
+
+                        outerDiv.appendChild(titleSpan);
+                        outerDiv.appendChild(creatorSpan);
+                        outerDiv.appendChild(dateSpan);
+                        outerDiv.appendChild(descriptionSpan);
+                        
+                        outerDiv.className = 'grid-item';
+
+                        div.appendChild(img);
+                        
+                        outerDiv.appendChild(div);
+
+                        $('#output').append(outerDiv);
+
                     });
 
                     var $grid = $('.grid').masonry({
                         // options
                         itemSelector: '.grid-item',
-                        columnWidth: 100
+                        columnWidth: 300
                     });
 
                     // make the display pretty with masonry

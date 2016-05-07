@@ -5,7 +5,7 @@ Queries DPLA API for images and displays them.
 ## Essential Features
 - ~~accept some form of user input (choosing a state from a dropdown menu, entering text, etc.)~~
 - ~~use DPLA API to search DPLA for related images~~
-- display images on page
+- ~~display images on page~~
 - display select metadata on page
 - link back to DPLA item record
 
@@ -25,7 +25,7 @@ Queries DPLA API for images and displays them.
 - better record display
 
 ## Requirements (4 of 5)
-- DOM element creation, deletion or modification (√)
+- ~~DOM element creation, deletion or modification~~
 - DOM traversal
 - Capturing and handling events (beyond just a “Do it!” button)
 	- could do this through the US map idea
