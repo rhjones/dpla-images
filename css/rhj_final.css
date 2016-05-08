@@ -186,4 +186,36 @@ form {
 	font-style: italic;
 }
 
+.item-creator, .item-date, .item-link {
+	font-size: 12px;
+}
+
+.grid-item span.item-description {
+	display: none;
+	padding-top: 0.5em;
+}
+
+.grid-item a {
+	display: none;
+	padding-top: 1em;
+	text-decoration: none;
+	color: #000;
+}
+
+.grid-item a:hover {
+	text-decoration: underline;
+}
+
+.grid-item a i {
+	padding-left: 6px;
+}
+
+
+
+.grid-item.is-expanded span.item-description,
+.grid-item.is-expanded a
+{
+	display: block;
+}
+
 

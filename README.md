@@ -6,8 +6,8 @@ Queries DPLA API for images and displays them.
 - ~~accept some form of user input (choosing a state from a dropdown menu, entering text, etc.)~~
 - ~~use DPLA API to search DPLA for related images~~
 - ~~display images on page~~
-- display select metadata on page
-- link back to DPLA item record
+- ~~display select metadata on page~~
+- ~~link back to DPLA item record~~
 
 ## Non Essential Features
 - more inventive way of searching: click on a map? use a datalist to allow for text entry/autocomplete?
@@ -22,7 +22,7 @@ Queries DPLA API for images and displays them.
 
 ## TODO
 - ~~figure out how to validate user input to avoid dangerous searches (alphanumeric only?)~~
-- better record display
+- ~~better record display~~
 
 ## Requirements (4 of 5)
 - ~~DOM element creation, deletion or modification~~
@@ -41,4 +41,3 @@ Queries DPLA API for images and displays them.
 - [Skeleton](http://getskeleton.com/)
 - [Masonry](http://masonry.desandro.com/)
 -- [animating item size](http://masonry.desandro.com/extras.html#animating-item-size)
-- https://www.smashingmagazine.com/2010/05/make-your-own-bookmarklets-with-jquery/

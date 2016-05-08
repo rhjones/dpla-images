@@ -80,6 +80,7 @@
                                 }
                             } 
                             else {
+                                // if there's no metadata, return without adding a span
                                 return;
                             }
                             if (datum.length > 175) {
@@ -89,9 +90,6 @@
                             var span = document.createElement('span');
                             $(span).addClass('item-' + metadata);
                             $(span).append(datum);
-                            if (metadata === 'description') {
-                                $(span).hide();
-                            }
                             $(innerDiv).append(span);
                         }
 
@@ -99,6 +97,13 @@
                         checkMetadata('creator');
                         checkMetadata('date');
                         checkMetadata('description');
+
+                        var link = document.createElement('a');
+                        $(link).attr('href','http://dp.la/item/' + item.id);
+                        $(link).attr('target', '_blank');
+                        $(link).text('View on DPLA');
+                        $(link).append('<i class="fa fa-external-link" aria-hidden="true"></i>');
+                        $(innerDiv).append(link);
                         
                         // append everything to DOM 
                         $(outerDiv).append(innerDiv);
@@ -142,8 +147,8 @@
                     // use reloadItems to force a reload after a new ajax call is made
                     $grid.masonry('reloadItems');
 
-                    $grid.on( 'click', '.grid-item-content', function( event ) {
-                      $( event.currentTarget ).parent('.grid-item').toggleClass('is-expanded');
+                    $grid.on( 'click', '.grid-item-content', function(event) {
+                      $(event.currentTarget).parent('.grid-item').toggleClass('is-expanded');
                       $grid.masonry();
                     });
 
