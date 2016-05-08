@@ -164,19 +164,15 @@
                         $(this).toggleBackgroundOpacity
                     );
 
-                    // make the display pretty with masonry
-                    // after images have loaded
+                    // apply Masonry after images are loaded for prettier layout and UI  
                     var $grid = $('.grid').masonry({
                         itemSelector: '.grid-item',
                         columnWidth: '.grid-sizer',
-                        percentPosition: true
+                        percentPosition: true,
                     });
                     $grid.imagesLoaded().progress( function() {
                         $grid.masonry('layout');
                     });
-
-                    // use reloadItems to force a reload after a new ajax call is made
-                    //$grid.masonry('reloadItems');
 
                     // clicking on an item expands it
                     // .off() removes any existing click handlers to prevent event from firing multiple times
@@ -193,6 +189,14 @@
         } else { // if search term fails validation
             $('#error').show();
         }
+
+        // after the ajax call is complete, reload masonry
+        // this ensures that masonry continue to be applied to new sets of images after the first ajax call
+        // see: http://stackoverflow.com/questions/6490633/jquery-masonry-multiple-ajax-call-issue
+        $(document).ajaxComplete(function() {
+            // use reloadItems to force a reload
+            $('.grid').masonry('reloadItems').masonry();
+        })
         
     });
 
