@@ -26,9 +26,13 @@ Queries the [DPLA API](http://dp.la/info/developers/codex/) for images and displ
 	- DPLA API
 
 ## Outside Sources
-- [Skeleton](http://getskeleton.com/)
 - [Masonry](http://masonry.desandro.com/)
 	- [animating item size](http://masonry.desandro.com/extras.html#animating-item-size)
+- [imagesLoaded](http://imagesloaded.desandro.com/)
+- [jQuery](https://jquery.com/)
+- [Google Fonts](https://www.google.com/fonts)
+- [Font Awesome](https://fortawesome.github.io/Font-Awesome/)
+- [Normalize.css](https://necolas.github.io/normalize.css/)
 
 ## Future ideas
 - more inventive way of searching: click on a map? use a datalist to allow for text entry/autocomplete?
