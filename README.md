@@ -1,4 +1,6 @@
-# Final Project for CSCI E-3 Introduction to Web Programming Using JavaScript, Spring 2016
+# DPLA Images
+
+Final Project for CSCI E-3 Introduction to Web Programming Using JavaScript, Spring 2016
 
 Queries the [DPLA API](http://dp.la/info/developers/codex/) for images and displays them.
 
