@@ -68,7 +68,7 @@
             var searchTerm = searchInput.replace(/ /g, '+');
 
             // query the DPLA API for images matching the search term        
-            var query = 'http://api.dp.la/v2/items?q=' + searchTerm + '&sourceResource.type=image&page_size=24&api_key=5a573c1768acfa5a1af77a9fee15e89b';
+            var query = 'http://api.dp.la/v2/items?q=' + searchTerm + '&sourceResource.type=image&page_size=25&api_key=5a573c1768acfa5a1af77a9fee15e89b';
             $.ajax({
                 url: query,
                 dataType: 'jsonp',
