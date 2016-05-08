@@ -31,6 +31,8 @@
 
     $('#buttons').click(function(e){
 
+        e.preventDefault();
+
         // hide any outstanding errors
         $('#error').hide();
         $('#dataError').hide();
@@ -169,17 +171,19 @@
                         columnWidth: '.grid-sizer',
                         percentPosition: true
                     });
-                    $grid.imagesLoaded().progress( function(instance, image) {
+                    $grid.imagesLoaded().progress( function() {
                         $grid.masonry('layout');
                     });
 
                     // use reloadItems to force a reload after a new ajax call is made
-                    $grid.masonry('reloadItems');
+                    //$grid.masonry('reloadItems');
 
                     // clicking on an item expands it
-                    $grid.on( 'click', '.grid-item-content', function(event) {
-                      $(event.currentTarget).parent('.grid-item').toggleClass('is-expanded');
-                      $grid.masonry();
+                    // .off() removes any existing click handlers to prevent event from firing multiple times
+                    // see: http://stackoverflow.com/questions/14969960/jquery-click-events-firing-multiple-times
+                    $grid.off().on( 'click', '.grid-item-content', function(event) {
+                        $(event.currentTarget).parent().toggleClass('is-expanded');
+                        $grid.masonry();
                     });
 
                 })
@@ -189,9 +193,6 @@
         } else { // if search term fails validation
             $('#error').show();
         }
-
-        // prevents page from reloading, which causes a flash
-        return false;
         
     });
 
