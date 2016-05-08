@@ -175,7 +175,7 @@ form {
 
 .grid-item-content {
 	width: 100%;
-	height: 200px;
+	height: 100%;
 	padding: 5px;
 	transition: width 0.4s, height 0.4s;
 }
@@ -186,22 +186,24 @@ form {
 }
 
 .grid-item {
-	height: 200px;
+	height: 300px;
 }
 
 .grid-item.is-expanded {
   width: 100%;
-  height: 200px;
+  height: 300px;
 }
 
 @media (min-width: 768px) {
 	.grid-sizer,
 	.grid-item { 
 		width: 33%; 
+		height: 200px;
 	}
 
 	.grid-item.is-expanded {
 	  width: 66%;
+	  height: 200px;
 	}
 }
 
