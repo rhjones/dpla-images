@@ -6,6 +6,22 @@
  */
 "use strict";
 
+// set up jQuery plugin to toggle background opacity
+(function($){
+    $.fn.toggleBackgroundOpacity = function(){
+        var oldColor = $(this).css('background-color');
+        if (oldColor.substring(0,4) === 'rgba') {
+            var newColor = oldColor.substring(0, oldColor.lastIndexOf(' '));
+            var newColor = newColor + ' 1.0)';
+            return $(this).css('background-color', newColor);
+        } else if (oldColor.substring(0,4) === 'rgb(') {
+            var newColor = oldColor.substring(3, oldColor.lastIndexOf(')'));
+            var newColor = 'rgba' + newColor + ', 0.5)';
+            return $(this).css('background-color', newColor);
+        }
+     };
+})(jQuery);
+
 // Self-invoking function so that nothing is exposed to the global scope
 (function(){
 
@@ -66,7 +82,7 @@
                         img.src = item.object;
                         $(innerDiv).append(img);
 
-                        // check for item metadata and add to innerDiv
+                        // function to check for item metadata and add to innerDiv
                         function checkMetadata(metadata) {
                             if (metadata ==='title' && item.hasOwnProperty('admin') && item.admin.sourceResource.hasOwnProperty('title')) {
                                 var datum = document.createTextNode(item.admin.sourceResource.title);
@@ -98,6 +114,7 @@
                         checkMetadata('date');
                         checkMetadata('description');
 
+                        // add link back to item on DPLA website
                         var link = document.createElement('a');
                         $(link).attr('href','http://dp.la/item/' + item.id);
                         $(link).attr('target', '_blank');
@@ -117,20 +134,10 @@
                         $(this).addClass(bgColors[index%6]);
                     });
 
-                    // reduce opacity of background color on hover
-
+                    // toggle opacity of background color on hover
                     $('.grid-item-content').hover(
-                        function() {
-                            var oldRGBA = $(this).css('background-color');
-                            var oldColor = oldRGBA.substring(0, oldRGBA.lastIndexOf(' '));
-                            var newColor = oldColor + ' 1.0)';
-                            $(this).css('background-color', newColor);
-                        }, function() {
-                            var oldRGBA = $(this).css('background-color');
-                            var oldColor = oldRGBA.substring(3, oldRGBA.lastIndexOf(')'));
-                            var newColor = 'rgba' + oldColor + ', 0.5)';
-                            $(this).css('background-color', newColor);
-                        }
+                        $(this).toggleBackgroundOpacity,
+                        $(this).toggleBackgroundOpacity
                     );
 
                     // make the display pretty with masonry
