@@ -1,7 +1,8 @@
 /* Rebekah Heacock Jones
  * rebekah.heacock@gmail.com
  * CSCI E-3, Spring 2016
- * hw2b.js 
+ * Final Project
+ * rhj_final.css 
  */
 
 html {
@@ -94,7 +95,7 @@ form {
 }
 
 #error {
-	color: red;
+	color: rgb(175, 66, 10);
 	display: none;
 	margin-bottom: .5rem;
 }
@@ -145,6 +146,9 @@ form {
 .grid-sizer,
 .grid-item { 
 	width: 100%; 
+}
+
+.grid-item {
 	height: 200px;
 }
 
@@ -157,12 +161,10 @@ form {
 	.grid-sizer,
 	.grid-item { 
 		width: 33%; 
-		height: 200px;
 	}
 
 	.grid-item.is-expanded {
 	  width: 66%;
-	  height: 200px;
 	}
 }
 
@@ -170,12 +172,10 @@ form {
 	.grid-sizer,
 	.grid-item { 
 		width: 25%; 
-		height: 200px;
 	}
 
 	.grid-item.is-expanded {
 	  width: 50%;
-	  height: 200px;
 	}
 }
 
@@ -183,12 +183,10 @@ form {
 	.grid-sizer,
 	.grid-item { 
 		width: 20%; 
-		height: 200px;
 	}
 
 	.grid-item.is-expanded {
 	  width: 40%;
-	  height: 200px;
 	}
 }
 
