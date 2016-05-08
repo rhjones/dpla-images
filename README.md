@@ -12,21 +12,21 @@ Queries DPLA API for images and displays them.
 ## Requirements (4 of 5)
 - ~~DOM element creation, deletion or modification~~
 - ~~DOM traversal~~
-	-- applying background colors to each .grid-item-content div
+	- applying background colors to each .grid-item-content div
 - ~~Capturing and handling events (beyond just a “Do it!” button)~~
-	-- clicking on .grid-item-content to expand
-	-- could do this through the US map idea
+	- clicking on .grid-item-content to expand
+	- could do this through the US map idea
 - Creating and handling a data structure (JSON, custom objects, etc)
-	-- maybe? 
+	- maybe? 
 - ~~Form validation~~
-	-- validate user input to be alphanumeric
+	- validate user input to be alphanumeric
 - Closures
 - ~~AJAX~~
 
 ## Outside Sources
 - [Skeleton](http://getskeleton.com/)
 - [Masonry](http://masonry.desandro.com/)
--- [animating item size](http://masonry.desandro.com/extras.html#animating-item-size)
+	- [animating item size](http://masonry.desandro.com/extras.html#animating-item-size)
 
 ## Future ideas
 - more inventive way of searching: click on a map? use a datalist to allow for text entry/autocomplete?

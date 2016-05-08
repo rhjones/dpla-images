@@ -25,9 +25,21 @@
 // Self-invoking function so that nothing is exposed to the global scope
 (function(){
 
-    var doit = $('#doit');
-    var output = $('#output');
-    var $grid = $('.grid');
+    $('#about-link').click(function(e) {
+        if ($('#credits').is(':visible')) {
+            $('#credits').slideToggle('fast');
+        }
+        $('#about').slideToggle('slow');
+        return false;
+    });
+
+    $('#credits-link').click(function(e) {
+        if ($('#about').is(':visible')) {
+            $('#about').slideToggle('fast');
+        }
+        $('#credits').slideToggle('slow');
+        return false;
+    });
 
     $('#buttons').click(function(e){
 

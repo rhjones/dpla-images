@@ -25,6 +25,38 @@ h1, h2, h3, h4, h5, h6 {
 	font-weight: 700;
 }
 
+nav {
+	background: #D9D9D9;
+	overflow: auto;
+	padding: 10px;
+	text-transform: uppercase;
+	letter-spacing: 0.2em;
+	font-family: 'Open Sans Condensed', sans-serif;
+	font-weight: 300;
+}
+
+ul.navigation {
+	padding: 0;
+	margin: 0;
+	list-style-type: none;
+	float: right;
+}
+
+ul.navigation li {
+	display: inline-block;
+	margin-left: 10px;
+}
+
+#about, #credits {
+	background: #D9D9D9;
+	padding: 10px 30px;
+	display: none;
+	font-family: 'Open Sans Condensed', sans-serif;
+	font-weight: 300;
+	text-align: center;
+	font-size: 1.2em;
+}
+
 label {
 	text-transform: uppercase;
 	letter-spacing: 0.1em;
