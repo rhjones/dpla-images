@@ -38,11 +38,12 @@
             //     .done(function(data){
 
                     var data = peacocks;
-                    
+
                     console.log(data);
 
                     // clear any preexisting output
                     $('#output').empty();
+                    $('#output').append('<div class="grid-sizer"></div>');
 
                     // show message if query returns no results
                     if (data.count === 0) {
@@ -60,16 +61,26 @@
                         var innerDiv = document.createElement('div');
                         $(innerDiv).addClass('grid-item-content');
 
+                        // create image and add to innerDiv
+                        var img = document.createElement('img');
+                        img.src = item.object;
+                        $(innerDiv).append(img);
+
                         // check for item metadata and add to innerDiv
                         function checkMetadata(metadata) {
-                            if (metadata == 'title' && item.hasOwnProperty('admin') && item.admin.sourceResource.hasOwnProperty('title')) {
+                            if (metadata ==='title' && item.hasOwnProperty('admin') && item.admin.sourceResource.hasOwnProperty('title')) {
                                 var datum = document.createTextNode(item.admin.sourceResource.title);
                             }
                             else if (item.sourceResource.hasOwnProperty(metadata)) {
-                                var datum = document.createTextNode(item.sourceResource[metadata]);
+                                if (metadata === 'date') {
+                                    var datum = document.createTextNode(item.sourceResource[metadata].displayDate ? item.sourceResource[metadata].displayDate : item.sourceResource[metadata][0].displayDate);
+                                }
+                                else {
+                                    var datum = document.createTextNode(item.sourceResource[metadata]);
+                                }
                             } 
                             else {
-                                var datum = document.createTextNode('No ' + metadata + ' given');
+                                return;
                             }
                             if (datum.length > 175) {
                                 var extraDatum = datum.splitText(175);
@@ -78,6 +89,9 @@
                             var span = document.createElement('span');
                             $(span).addClass('item-' + metadata);
                             $(span).append(datum);
+                            if (metadata === 'description') {
+                                $(span).hide();
+                            }
                             $(innerDiv).append(span);
                         }
 
@@ -86,12 +100,7 @@
                         checkMetadata('date');
                         checkMetadata('description');
                         
-                        // create image
-                        var img = document.createElement('img');
-                        img.src = item.object;
-
                         // append everything to DOM 
-                        $(innerDiv).append(img);
                         $(outerDiv).append(innerDiv);
                         $('#output').append(outerDiv);
 
@@ -99,8 +108,8 @@
 
                     // assign background colors to item divs
                     $('.grid-item-content').each(function(index) {
-                        var bgColors = ['green', 'yellow', 'aqua', 'gray', 'red'];
-                        $(this).addClass(bgColors[index%5]);
+                        var bgColors = ['green', 'yellow', 'blue', 'aqua', 'gray', 'red'];
+                        $(this).addClass(bgColors[index%6]);
                     });
 
                     // reduce opacity of background color on hover
@@ -123,7 +132,8 @@
                     // after images have loaded
                     var $grid = $('.grid').masonry({
                         itemSelector: '.grid-item',
-                        columnWidth: 300
+                        columnWidth: '.grid-sizer',
+                        percentPosition: true
                     });
                     $grid.imagesLoaded().progress( function() {
                         $grid.masonry('layout');

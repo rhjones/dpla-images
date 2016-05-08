@@ -26,17 +26,19 @@ Queries DPLA API for images and displays them.
 
 ## Requirements (4 of 5)
 - ~~DOM element creation, deletion or modification~~
-- DOM traversal
+- ~~DOM traversal~~
+	-- applying background colors to each .grid-item-content div
 - Capturing and handling events (beyond just a “Do it!” button)
-	- could do this through the US map idea
+	-- could do this through the US map idea
 - Creating and handling a data structure (JSON, custom objects, etc)
-	- maybe? 
+	-- maybe? 
 - ~~Form validation~~
-	- validate user input to be alphanumeric
+	-- validate user input to be alphanumeric
 - Closures
 - ~~AJAX~~
 
 ## Outside Sources
+- [Skeleton](http://getskeleton.com/)
 - [Masonry](http://masonry.desandro.com/)
 -- [animating item size](http://masonry.desandro.com/extras.html#animating-item-size)
 - https://www.smashingmagazine.com/2010/05/make-your-own-bookmarklets-with-jquery/

@@ -12,8 +12,30 @@ html {
   box-sizing: inherit;
 }
 
-.container {
-	max-width: 900px;
+body {
+	font-family: 'Lora', Garamond, serif;
+	font-size: 14px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	text-transform: uppercase;
+	letter-spacing: 0.05em;
+	font-family: 'Open Sans Condensed', sans-serif;
+	font-weight: 700;
+}
+
+label {
+	text-transform: uppercase;
+	letter-spacing: 0.1em;
+	font-family: 'Open Sans Condensed', sans-serif;
+	font-weight: 300;
+}
+
+button {
+	text-transform: uppercase;
+	letter-spacing: 0.2em;
+	font-family: 'Open Sans Condensed', sans-serif;
+	font-weight: 700;
 }
 
 header {
@@ -63,42 +85,82 @@ form {
 	background-color: rgba(175, 66, 10, 0.5);
 }
 
+.blue {
+	background-color: rgba(121, 142, 135, 0.5);
+}
+
 /* MASONRY */
 
 .grid-item {
 	float: left;
 }
 
-.grid-item,
-.grid-item-content { 
-	width: 300px; 
-	height: 200px;
-}
-
 .grid-item-content {
+	width: 100%;
+	height: 200px;
 	padding: 5px;
 	transition: width 0.4s, height 0.4s;
 }
+
+.grid-sizer,
+.grid-item { 
+	width: 100%; 
+	height: 200px;
+}
+
+.grid-item.is-expanded {
+  width: 100%;
+  height: 200px;
+}
+
+@media (min-width: 768px) {
+	.grid-sizer,
+	.grid-item { 
+		width: 33%; 
+		height: 200px;
+	}
+
+	.grid-item.is-expanded {
+	  width: 66%;
+	  height: 200px;
+	}
+}
+
+@media (min-width: 992px) {
+	.grid-sizer,
+	.grid-item { 
+		width: 25%; 
+		height: 200px;
+	}
+
+	.grid-item.is-expanded {
+	  width: 50%;
+	  height: 200px;
+	}
+}
+
+@media (min-width: 1200px) {
+	.grid-sizer,
+	.grid-item { 
+		width: 20%; 
+		height: 200px;
+	}
+
+	.grid-item.is-expanded {
+	  width: 40%;
+	  height: 200px;
+	}
+}
+
 
 .grid-item-content:hover {
 	cursor: pointer;
 }
 
-.grid-item.is-expanded,
-.grid-item.is-expanded .grid-item-content {
-  width: 600px;
-  height: 200px;
-}
 
-.grid-item-content img {
-	width: 25%;
-}
 
 .grid-item.is-expanded {
   z-index: 2;
-}
-
-.grid-item.is-expanded .grid-item-content {
 }
 
 /* ITEM DISPLAY */
@@ -106,6 +168,22 @@ form {
 	display: block;
 }
 
-.item-title {
-	font-weight: bold;
+.grid-item-content img {
+	float: right;
+	max-width: 50%;
+	max-height: 180px;
 }
+
+.item-title {
+	text-transform: uppercase;
+	font-size: 1.2em;
+	letter-spacing: 0.05em;
+	font-family: 'Open Sans Condensed', sans-serif;
+	font-weight: 700;
+}
+
+.item-creator {
+	font-style: italic;
+}
+
+
