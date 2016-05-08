@@ -1,6 +1,6 @@
 # Final Project for CSCI E-3 Introduction to Web Programming Using JavaScript, Spring 2016
 
-Queries DPLA API for images and displays them.
+Queries the [DPLA API](http://dp.la/info/developers/codex/) for images and displays them.
 
 ## Essential Features
 - ~~accept some form of user input (choosing a state from a dropdown menu, entering text, etc.)~~
@@ -9,19 +9,21 @@ Queries DPLA API for images and displays them.
 - ~~display select metadata on page~~
 - ~~link back to DPLA item record~~
 
-## Requirements (4 of 5)
+## Requirements (at least 4)
 - ~~DOM element creation, deletion or modification~~
+	- add new divs, images, spans, and links for each search result
 - ~~DOM traversal~~
 	- applying background colors to each .grid-item-content div
 - ~~Capturing and handling events (beyond just a “Do it!” button)~~
 	- clicking on .grid-item-content to expand
-	- could do this through the US map idea
+	- click on "about" and "credits" links to toggle display of relevant text
+	- surprise me button
 - Creating and handling a data structure (JSON, custom objects, etc)
-	- maybe? 
 - ~~Form validation~~
 	- validate user input to be alphanumeric
 - Closures
 - ~~AJAX~~
+	- DPLA API
 
 ## Outside Sources
 - [Skeleton](http://getskeleton.com/)
