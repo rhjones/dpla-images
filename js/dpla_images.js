@@ -50,7 +50,7 @@
         $('#error').hide();
         $('#dataError').hide();
 
-        if (event.target === document.getElementById('doit')) {
+        if (event.target === document.getElementById('search')) {
             // get and validate the search term
             // only A-Z, a-z, 0-9, and spaces allowed
             var searchInput = $('#searchterm').val();
