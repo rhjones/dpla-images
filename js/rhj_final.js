@@ -25,37 +25,59 @@
 // Self-invoking function so that nothing is exposed to the global scope
 (function(){
 
-    var button = $('#doit');
+    var doit = $('#doit');
     var output = $('#output');
     var $grid = $('.grid');
 
-    button.click(function(){
+    $('#buttons').click(function(e){
 
         // hide any outstanding errors
         $('#error').hide();
         $('#dataError').hide();
 
-        // get and validate the search term
-        // only A-Z, a-z, 0-9, and spaces allowed
-        var searchInput = $('#searchterm').val();
-        var re = /^[A-Za-z\d ]+$/;
+        if (event.target === document.getElementById('doit')) {
+            // get and validate the search term
+            // only A-Z, a-z, 0-9, and spaces allowed
+            var searchInput = $('#searchterm').val();
+        }
+        else if (event.target === document.getElementById('surprise')) {
+            var surprises = [
+                'zebra',
+                'penguin',
+                'jazz',
+                'unicorn',
+                'daisy',
+                'red sox',
+                'yellow',
+                'hippies',
+                'illman brothers',
+                'earhart',
+                'mountain',
+                'bagpipes',
+                'cake',
+                'stuff'
+            ];
+            var searchInput = surprises[Math.floor(Math.random()*surprises.length)];
+            $('#searchterm').val(searchInput);
+        }
 
         // if search term validates
+        var re = /^[A-Za-z\d ]+$/;
         if(re.test(searchInput)) {
 
             var searchTerm = searchInput.replace(/ /g, '+');
 
             // query the DPLA API for images matching the search term        
-            //var query = 'http://api.dp.la/v2/items?q=' + searchTerm + '&sourceResource.type=image&page_size=24&api_key=5a573c1768acfa5a1af77a9fee15e89b';
-            // $.ajax({
-            //     url: query,
-            //     dataType: 'jsonp',
-            //     })
-            //     .done(function(data){
+            var query = 'http://api.dp.la/v2/items?q=' + searchTerm + '&sourceResource.type=image&page_size=24&api_key=5a573c1768acfa5a1af77a9fee15e89b';
+            $.ajax({
+                url: query,
+                dataType: 'jsonp',
+                })
+                .done(function(data){
 
-                    var data = peacocks;
+                    // var data = peacocks;
 
-                    console.log(data);
+                    // console.log(data);
 
                     // clear any preexisting output
                     $('#output').empty();
@@ -147,28 +169,26 @@
                         columnWidth: '.grid-sizer',
                         percentPosition: true
                     });
-                    $grid.imagesLoaded().progress( function() {
+                    $grid.imagesLoaded().progress( function(instance, image) {
                         $grid.masonry('layout');
                     });
 
                     // use reloadItems to force a reload after a new ajax call is made
                     $grid.masonry('reloadItems');
 
+                    // clicking on an item expands it
                     $grid.on( 'click', '.grid-item-content', function(event) {
                       $(event.currentTarget).parent('.grid-item').toggleClass('is-expanded');
                       $grid.masonry();
                     });
 
-                // })
-                // .fail(function(data){
-                //     $('#dataError').html('Error querying the database. Please try again.').show();
-                // });
+                })
+                .fail(function(data){
+                    $('#dataError').html('Error querying the database. Please try again.').show();
+                });
         } else { // if search term fails validation
             $('#error').show();
         }
-
-
-        
 
         // prevents page from reloading, which causes a flash
         return false;

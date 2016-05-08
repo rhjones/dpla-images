@@ -9,26 +9,12 @@ Queries DPLA API for images and displays them.
 - ~~display select metadata on page~~
 - ~~link back to DPLA item record~~
 
-## Non Essential Features
-- more inventive way of searching: click on a map? use a datalist to allow for text entry/autocomplete?
-- more metadata
-- pagination/more results?
-- comparison: pit two search terms against each other & return metadata
-	- # of images
-	- # of videos
-	- # of audio files
-	- # of text items
-- turn into a bookmarklet? select something on a webpage and click the DPLA image search bookmarklet, and get a new page w/results 
-
-## TODO
-- ~~figure out how to validate user input to avoid dangerous searches (alphanumeric only?)~~
-- ~~better record display~~
-
 ## Requirements (4 of 5)
 - ~~DOM element creation, deletion or modification~~
 - ~~DOM traversal~~
 	-- applying background colors to each .grid-item-content div
-- Capturing and handling events (beyond just a “Do it!” button)
+- ~~Capturing and handling events (beyond just a “Do it!” button)~~
+	-- clicking on .grid-item-content to expand
 	-- could do this through the US map idea
 - Creating and handling a data structure (JSON, custom objects, etc)
 	-- maybe? 
@@ -41,3 +27,14 @@ Queries DPLA API for images and displays them.
 - [Skeleton](http://getskeleton.com/)
 - [Masonry](http://masonry.desandro.com/)
 -- [animating item size](http://masonry.desandro.com/extras.html#animating-item-size)
+
+## Future ideas
+- more inventive way of searching: click on a map? use a datalist to allow for text entry/autocomplete?
+- more metadata
+- pagination/more results?
+- comparison: pit two search terms against each other & return metadata
+	- # of images
+	- # of videos
+	- # of audio files
+	- # of text items
+- turn into a bookmarklet? select something on a webpage and click the DPLA image search bookmarklet, and get a new page w/results 
