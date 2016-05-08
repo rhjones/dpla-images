@@ -1,8 +1,9 @@
 /* Rebekah Heacock Jones
  * rebekah.heacock@gmail.com
+ * https://github.com/rebekahheacock/
  * CSCI E-3, Spring 2016
- * Final Project
- * rhj_final.js 
+ * Final Project: DPLA Images
+ * dpla_images.js 
  */
 "use strict";
 
