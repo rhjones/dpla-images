@@ -4,8 +4,10 @@ Final Project for CSCI E-3 Introduction to Web Programming Using JavaScript, Spr
 
 Queries the [DPLA API](http://dp.la/info/developers/codex/) for images and displays them.
 
+Entering an alphanumeric search term and clicking "Find Images" will return 25 image records from the DPLA. Clicking "Surprise Me" will return 24 images on a 'surprise' topic (selected at random from an array of possibilities).
+
 ## Essential Features
-- ~~accept some form of user input (choosing a state from a dropdown menu, entering text, etc.)~~
+- ~~accept user input~~
 - ~~use DPLA API to search DPLA for related images~~
 - ~~display images on page~~
 - ~~display select metadata on page~~
